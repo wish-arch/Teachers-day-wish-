@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Teacher's Day!</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Floating Particles Background */
+    .bg-particles span {
+      position: absolute;
+      display: block;
+      width: 15px;
+      height: 15px;
+      background: rgba(255, 255, 255, 0.15);
+      bottom: -50px;
+      border-radius: 50%;
+      animation: float 10s infinite linear;
+    }
+
+    .bg-particles span:nth-child(1) { left: 10%; width: 20px; height: 20px; animation-duration: 7s; }
+    .bg-particles span:nth-child(2) { left: 30%; width: 10px; height: 10px; animation-duration: 12s; }
+    .bg-particles span:nth-child(3) { left: 50%; width: 25px; height: 25px; animation-duration: 9s; }
+    .bg-particles span:nth-child(4) { left: 70%; width: 15px; height: 15px; animation-duration: 11s; }
+    .bg-particles span:nth-child(5) { left: 90%; width: 18px; height: 18px; animation-duration: 8s; }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Card Container */
+    .card-container {
+      width: 90%;
+      max-width: 450px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Stages */
+    .stage {
+      display: none;
+      animation: fadeIn 0.8s ease-in-out forwards;
+    }
+
+    .stage.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Typography & Media */
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #ffd700;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #e0e0e0;
+      margin-bottom: 20px;
+    }
+
+    .teacher-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top center;
+      border: 4px solid #ffd700;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+      margin-bottom: 20px;
+      animation: pulse 2s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.05); }
+    }
+
+    /* Letter Styling */
+    .letter-box {
+      background: rgba(255, 255, 255, 0.95);
+      color: #333;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: left;
+      font-size: 0.95rem;
+      max-height: 220px;
+      overflow-y: auto;
+      margin-bottom: 20px;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    /* Button */
+    .btn {
+      background: #ffd700;
+      color: #1a1a1a;
+      border: none;
+      padding: 12px 28px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    }
+
+    .btn:hover {
+      background: #fff;
+      transform: translateY(-2deg);
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.4);
+    }
+
+    /* Progress Indicator */
+    .progress-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 25px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+
+    .dot.active {
+      background: #ffd700;
+      width: 25px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-particles">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <div class="card-container">
+    
+    <!-- Stage 1: Welcome -->
+    <div class="stage active" id="stage1">
+      <h1>A Special Surprise</h1>
+      <p>Today is dedicated to honoring someone who makes a real difference in our lives every day.</p>
+      <button class="btn" onclick="nextStage(2)">Begin Presentation</button>
+    </div>
+
+    <!-- Stage 2: Photo Reveal -->
+    <div class="stage" id="stage2">
+      <img src="IMG-20260829-WA0015(1).jpg" alt="Teacher Photo" class="teacher-photo">
+      <h1>To Our Guiding Light</h1>
+      <p>Thank you, Sir, for your endless patience, dedication, and leadership.</p>
+      <button class="btn" onclick="nextStage(3)">Continue</button>
+    </div>
+
+    <!-- Stage 3: Appreciation Core -->
+    <div class="stage" id="stage3">
+      <h1>Beyond Textbooks</h1>
+      <p>You don't just teach lessons from books; you teach us how to think, grow, and face challenges with confidence.</p>
+      <button class="btn" onclick="nextStage(4)">Read Letter</button>
+    </div>
+
+    <!-- Stage 4: Personal Letter -->
+    <div class="stage" id="stage4">
+      <h1>A Letter of Gratitude</h1>
+      <div class="letter-box">
+        <p>Dear Sir,</p>
+        <br>
+        <p>Thank you for being more than just an instructor. Your passion for teaching inspires us to aim higher and work harder every day.</p>
+        <br>
+        <p>The knowledge, values, and encouragement you give us will stay with us throughout our lives. We are truly fortunate to learn under your guidance.</p>
+        <br>
+        <p style="margin-bottom:0; font-weight:bold;">— With utmost respect,</p>
+        <p style="margin-top:2px; font-weight:bold;">Your Students</p>
+      </div>
+      <button class="btn" onclick="nextStage(5)">Final Wish</button>
+    </div>
+
+    <!-- Stage 5: Celebration Wish -->
+    <div class="stage" id="stage5">
+      <h1>Happy Teacher's Day!</h1>
+      <p>May your day be filled with joy, respect, and happiness. Thank you for everything, Sir!</p>
+      <button class="btn" onclick="nextStage(1)">Replay Wish</button>
+    </div>
+
+    <!-- Step Tracker -->
+    <div class="progress-dots">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+  </div>
+
+  <script>
+    function nextStage(stageNum) {
+      const stages = document.querySelectorAll('.stage');
+      const dots = document.querySelectorAll('.dot');
+      
+      stages.forEach(stage => stage.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+
+      document.getElementById(`stage${stageNum}`).classList.add('active');
+      dots[stageNum - 1].classList.add('active');
+    }
+  </script>
+</body>
+</html>
